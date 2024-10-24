@@ -1,0 +1,15 @@
+{
+    "name": "frizar_ilya/itylip-backend",
+    "autoload": {
+        "psr-4": {
+            "FrizarIlya\\ItylipBackend\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Ilya Kondryukov",
+            "email": "mat8765@mail.ru"
+        }
+    ],
+    "require": {}
+}
