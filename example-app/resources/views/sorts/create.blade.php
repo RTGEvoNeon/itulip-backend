@@ -15,18 +15,6 @@
             <label for="title">Название:</label>
             <input type="text" name="title" id="title" required>
         </div>
-        <div>
-            <label for="image">Изображение:</label>
-            <input type="file" name="image" id="image">
-        </div>
-        <div>
-            <label for="price">Цена:</label>
-            <input type="number" name="price" id="price" step="0.01">
-        </div>
-        <div>
-            <label for="color">Цвет:</label>
-            <input type="text" name="color" id="color">
-        </div>
         <button type="submit">Добавить сорт</button>
     </form>
     <a href="{{ route('sorts.index') }}">Назад к списку сортов</a>

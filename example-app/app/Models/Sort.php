@@ -8,5 +8,16 @@ use Illuminate\Database\Eloquent\Model;
 class Sort extends Model
 {
     use HasFactory;
-    protected $fillable = ['title', 'price', 'image', 'color', 'sold', 'died', 'collected', 'planted'];
+
+    /**
+     * Атрибуты, которые можно массово заполнять.
+     *
+     * @var array
+     */
+    protected $fillable = [
+        'title',
+        'planted',
+        'collected',
+        'ordered',
+    ];
 }

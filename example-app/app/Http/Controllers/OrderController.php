@@ -2,18 +2,19 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Sort;
+use App\Models\Client;
+use App\Models\Order;
 use Illuminate\Http\Request;
 
-class SortController extends Controller
+class OrderController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        $sorts = Sort::all();
-        return view('sorts.index', compact('sorts')); 
+        $orders = Order::all();
+        return view('orders.index', compact('orders'));
     }
 
     /**
@@ -21,7 +22,7 @@ class SortController extends Controller
      */
     public function create()
     {
-        return view('sorts.create');
+        return view('orders.create');
     }
 
     /**
@@ -29,9 +30,19 @@ class SortController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate(['title' => 'required|string|max:255']);
-        Sort::create(['title' => $request->title]);
-        return redirect()->route('sorts.index')->with('success', 'Сорт успешно добавлен!');
+        $request->validate([
+            'total_count' => 'required|numeric|min:0|max:999999.99',
+            'price' => 'required|numeric|min:0|max:999.99',
+            'total_price' => 'required|numeric|min:0|max:999999.99',
+            'prepayment' => 'nullable|numeric|min:0|max:999999.99',
+            'date' => 'required|date',
+            'total_count_box' => 'required|integer|min:0',
+            'box_price' => 'nullable|numeric|min:0|max:999.99',
+        ]);
+
+        $client = Client::firstOrCreate(['phone'=> $request->phone], []);
+
+        
     }
 
     /**

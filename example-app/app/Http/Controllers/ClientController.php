@@ -2,18 +2,18 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Sort;
+use App\Models\Client;
 use Illuminate\Http\Request;
 
-class SortController extends Controller
+class ClientController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        $sorts = Sort::all();
-        return view('sorts.index', compact('sorts')); 
+        $clients = Client::all();
+        return view('clients.index', compact('clients'));
     }
 
     /**
@@ -21,7 +21,7 @@ class SortController extends Controller
      */
     public function create()
     {
-        return view('sorts.create');
+        //
     }
 
     /**
@@ -29,9 +29,7 @@ class SortController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate(['title' => 'required|string|max:255']);
-        Sort::create(['title' => $request->title]);
-        return redirect()->route('sorts.index')->with('success', 'Сорт успешно добавлен!');
+        //
     }
 
     /**
