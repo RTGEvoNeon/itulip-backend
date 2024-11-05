@@ -41,8 +41,24 @@ class OrderController extends Controller
         ]);
 
         $client = Client::firstOrCreate(['phone'=> $request->phone], []);
-
         
+        $order = Order::create([
+            'total_count' => $request->total_count,
+            'price' => $request->price,
+            'total_price' => $request->total_price,
+            'prepayment'=> $request->prepayment,
+            'date'=> $request->date,
+            'total_count_box'=> $request->total_count_box,
+            'box_price'=> $request->box_price,
+            'client_id'=> $client->id,
+        ]);
+
+            // Проверка добавления заказа
+        if ($order) {
+        return response()->json(['message' => 'Заказ успешно добавлен', 'order' => $order], 201);
+        } else {
+        return response()->json(['message' => 'Не удалось добавить заказ'], 500);
+    }
     }
 
     /**
